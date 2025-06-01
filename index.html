@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorting Algorithm Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type=".png" href="Sort.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-sort-amount-up"></i> Sorting Algorithm Visualizer</h1>
+      <p class="tagline">Understand how sorting algorithms work step by step</p>
+    </header>
+
+    <div class="algorithm-cards">
+      <div class="algo-card" data-algo="bubble">
+        <div class="card-icon"><i class="fas fa-exchange-alt"></i></div>
+        <h3>Bubble Sort</h3>
+        <p>O(n²) - Simple comparison-based algorithm</p>
+      </div>
+      <div class="algo-card" data-algo="selection">
+        <div class="card-icon"><i class="fas fa-hand-pointer"></i></div>
+        <h3>Selection Sort</h3>
+        <p>O(n²) - Finds minimum element in each pass</p>
+      </div>
+      <div class="algo-card" data-algo="insertion">
+        <div class="card-icon"><i class="fas fa-indent"></i></div>
+        <h3>Insertion Sort</h3>
+        <p>O(n²) - Builds sorted array one item at a time</p>
+      </div>
+      <div class="algo-card" data-algo="merge">
+        <div class="card-icon"><i class="fas fa-object-group"></i></div>
+        <h3>Merge Sort</h3>
+        <p>O(n log n) - Divide and conquer algorithm</p>
+      </div>
+      <div class="algo-card" data-algo="quick">
+        <div class="card-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Quick Sort</h3>
+        <p>O(n log n) - Uses pivoting strategy</p>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <form id="sortForm" autocomplete="off">
+        <h2 id="selected-algo-title">Select an algorithm above</h2>
+        <div class="input-container">
+          <label for="userInput">Enter numbers (comma-separated):</label>
+          <div class="input-with-button">
+            <input type="text" id="userInput" placeholder="e.g. 5,3,8,1,2">
+            <button type="button" id="randomBtn" title="Generate random numbers"><i class="fas fa-random"></i></button>
+          </div>
+          <button type="submit" id="solveBtn" class="primary-btn" disabled>Visualize Sorting</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="resultArea" class="hidden">
+      <div class="result-header">
+        <h2><i class="fas fa-list-ol"></i> Sorting Process</h2>
+        <div class="result-controls">
+          <button id="copyBtn" title="Copy results"><i class="fas fa-copy"></i></button>
+          <button id="newSortBtn" title="New sort"><i class="fas fa-redo"></i></button>
+        </div>
+      </div>
+      <div class="visualization-area">
+        <div class="array-bars" id="arrayVisualization"></div>
+      </div>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="steps">Step by Step</button>
+        <button class="tab-btn" data-tab="complexity">Complexity Analysis</button>
+        <button class="tab-btn" data-tab="code">Algorithm Code</button>
+      </div>
+      <div class="tab-content">
+        <div id="steps" class="tab-pane active">
+          <pre id="stepsContent"></pre>
+        </div>
+        <div id="complexity" class="tab-pane">
+          <div id="complexityContent"></div>
+        </div>
+        <div id="code" class="tab-pane">
+          <pre id="codeContent"></pre>
+        </div>
+      </div>
+      <div class="result-summary">
+        <div class="summary-item">
+          <span class="summary-label">Original Array:</span>
+          <span id="originalArray" class="summary-value"></span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Sorted Result:</span>
+          <span id="sortedOutput" class="summary-value"></span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Time Taken:</span>
+          <span id="timeTaken" class="summary-value"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Sorting Algorithm Visualizer | <a href="#" id="aboutLink">About</a></p>
+  </footer>
+
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>About Sorting Algorithm Visualizer</h2>
+      <p>This tool helps you understand how different sorting algorithms work by showing step-by-step visualizations of the sorting process.</p>
+      <h3>Available Algorithms:</h3>
+      <ul>
+        <li><strong>Bubble Sort:</strong> Repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.</li>
+        <li><strong>Selection Sort:</strong> Divides the input list into a sorted and an unsorted region, and repeatedly selects the smallest element from the unsorted region.</li>
+        <li><strong>Insertion Sort:</strong> Builds the final sorted array one item at a time, taking each element and inserting it into its correct position.</li>
+        <li><strong>Merge Sort:</strong> Divides the array into halves, sorts them and then merges them back together.</li>
+        <li><strong>Quick Sort:</strong> Selects a 'pivot' element and partitions the array around the pivot.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
